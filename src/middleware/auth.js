@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
         let token   = req.header('Authorization').replace('Bearer ', '');
         let decoded = jwt.verify(token, process.env.TOKEN_SECRET);
         let user    = await User.findOne({
-            _id: decoded.id,
+            _id: decoded._id,
             'tokens.token': token
         });
 
